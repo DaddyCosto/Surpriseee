@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyeux Anniversaire 17 ans</title>
+
+<!-- Police élégante -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    height:100%;
+    scroll-snap-type:y mandatory;
+    overflow-y:scroll;
+}
+
+/* 🌸 TOUS LES SLIDES ONT LE MÊME FOND */
+section{
+    height:100vh;
+    scroll-snap-align:start;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    position:relative;
+    padding:20px;
+    background:url("100.jpg") center/cover no-repeat;
+}
+
+/* SLIDE 1 TEXTE */
+#slide1 h1, #slide1 h2{
+    color:pink;
+    font-family:'Dancing Script', cursive;
+    text-shadow:2px 2px 10px rgba(0,0,0,0.5);
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+h2{
+    margin-bottom:10px;
+}
+
+p{
+    max-width:700px;
+    line-height:1.8;
+    font-size:1.1rem;
+    color:white;
+    text-shadow:2px 2px 10px rgba(0,0,0,0.6);
+}
+
+/* IMAGES */
+.real-animal{
+    max-width:320px;
+    width:90%;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    margin-bottom:15px;
+}
+
+/* BOUTON MUSIQUE */
+#musicBtn{
+    padding:15px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    background:gold;
+    color:black;
+    position:absolute;
+    transition:0.4s;
+}
+
+/* CONFETTIS DORÉS */
+.confetti{
+    position:fixed;
+    top:-10px;
+    width:10px;
+    height:10px;
+    background:gold;
+    opacity:0.9;
+    animation:fall 4s linear infinite;
+    z-index:9999;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+/* FEUX D'ARTIFICE */
+.firework{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:gold;
+    animation:explode 1.5s infinite;
+}
+
+@keyframes explode{
+    0%{transform:scale(0); opacity:1;}
+    100%{transform:scale(8); opacity:0;}
+}
+
+/* SLIDE 5 EXTRA TEXTE */
+.extra-text{
+    color:white;
+    font-size:1.3rem;
+    margin:10px 0;
+    text-shadow:2px 2px 10px rgba(0,0,0,0.7);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 -->
+<section id="slide1">
+    <h1>🎉 Joyeux Anniversaire 🎉</h1>
+    <h2>Zanzè Angeline</h2>
+    <h1>17 ans</h1>
+</section>
+
+<!-- SLIDE 2 -->
+<section>
+    <img src="chat.jpg" class="real-animal">
+    <h2>🐱 Joyeux anniversaire 🐱</h2>
+    <p>Ce chat t’envoie plein d’amour et de douceur ✨</p>
+</section>
+
+<!-- SLIDE 3 -->
+<section>
+    <h2>🌟 Le Mythe de la 17ème Étoile 🌟</h2>
+    <p>
+        À 17 ans, une étoile spéciale apparaît dans le ciel et symbolise les rêves et la beauté.
+    </p>
+</section>
+
+<!-- SLIDE 4 -->
+<section>
+    <h2>🎶 Petite surprise 🎶</h2>
+
+    <button id="musicBtn">Petite surprise</button>
+    <audio id="music" src="Maestro.mp3"></audio>
+</section>
+
+<!-- SLIDE 5 -->
+<section>
+    <div class="extra-text">Coucou beauté 💖</div>
+
+    <img src="chien.jpg" class="real-animal">
+
+    <h2>🐶 Joyeux anniversaire 🐶</h2>
+    <p>Amour, joie et bonheur pour toi 💖</p>
+
+    <div class="extra-text">Coucou beauté 💖</div>
+</section>
+
+<!-- SLIDE 6 -->
+<section id="final">
+    <h1>🎆 Message Final 🎆</h1>
+    <h2>Lawson Jean Pierre te souhaite</h2>
+    <h2>un merveilleux anniversaire 💖</h2>
+</section>
+
+<script>
+
+/* 🌟 CONFETTIS DORÉS EN PLUIE CONTINUE */
+for(let i=0;i<80;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"%";
+    c.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(c);
+}
+
+/* 🎶 BOUTON 3 TOUCHES */
+const btn=document.getElementById("musicBtn");
+const music=document.getElementById("music");
+
+let touches=0;
+
+btn.addEventListener("click",()=>{
+
+    touches++;
+
+    if(touches<3){
+        btn.style.left=Math.random()*70+"%";
+        btn.style.top=Math.random()*70+"%";
+        btn.innerText="Encore "+(3-touches)+" fois";
+    }else{
+        btn.innerText="🎵 Bonne écoute 🎵";
+        music.play();
+    }
+
+});
+
+/* 🎆 FEUX D'ARTIFICE */
+const final=document.getElementById("final");
+
+for(let i=0;i<30;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"%";
+    f.style.top=Math.random()*100+"%";
+    final.appendChild(f);
+}
+
+</script>
+
+</body>
+  </html>
